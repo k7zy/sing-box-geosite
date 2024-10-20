@@ -11,9 +11,13 @@ from io import StringIO
 # 映射字典
 MAP_DICT = {'DOMAIN-SUFFIX': 'domain_suffix', 'HOST-SUFFIX': 'domain_suffix', 'host-suffix': 'domain_suffix', 'DOMAIN': 'domain', 'HOST': 'domain', 'host': 'domain',
             'DOMAIN-KEYWORD':'domain_keyword', 'HOST-KEYWORD': 'domain_keyword', 'host-keyword': 'domain_keyword', 'IP-CIDR': 'ip_cidr',
-            'ip-cidr': 'ip_cidr', 'IP-CIDR6': 'ip_cidr',
+            'ip-cidr': 'ip_cidr', 'IP-CIDR6': 'ip_cidr', 
             'IP6-CIDR': 'ip_cidr','SRC-IP-CIDR': 'source_ip_cidr', 'GEOIP': 'geoip', 'DST-PORT': 'port',
             'SRC-PORT': 'source_port', "URL-REGEX": "domain_regex", "DOMAIN-REGEX": "domain_regex"}
+
+def read_yaml_file(file_path):
+    with open(file_path, 'r') as file:
+        return yaml.safe_load(file)
 
 def read_yaml_from_url(url):
     headers = {'User-Agent': 'Mozilla/5.0'}
@@ -119,7 +123,15 @@ def sort_dict(obj):
     else:
         return obj
 
+def parse_list_file(link):
     try:
+        df, rules = parse_and_convert_to_dataframe(link)
+        return df, rules
+    except Exception as e:
+        print(f'获取链接出错，已跳过：{link}，原因：{str(e)}')
+        return pd.DataFrame(), []
+
+def merge_and_save_results(key, dfs, rules_list, output_directory):
     df = pd.concat(dfs, ignore_index=True)  # 拼接为一个DataFrame
     df = df[~df['pattern'].str.contains('#')].reset_index(drop=True)  # 删除pattern中包含#号的行
     df = df[df['pattern'].isin(MAP_DICT.keys())].reset_index(drop=True)  # 删除不在字典中的pattern
@@ -143,8 +155,11 @@ def sort_dict(obj):
         result_rules["rules"].insert(0, {'domain': domain_entries})
 
     # 处理逻辑规则
+    for rules in rules_list:
+        result_rules["rules"].extend(rules)
 
     # 使用 output_directory 拼接完整路径
+    file_name = os.path.join(output_directory, f"{key}.json")
     with open(file_name, 'w', encoding='utf-8') as output_file:
         result_rules_str = json.dumps(sort_dict(result_rules), ensure_ascii=False, indent=2)
         result_rules_str = result_rules_str.replace('\\\\', '\\')
@@ -154,10 +169,22 @@ def sort_dict(obj):
     os.system(f"sing-box rule-set compile --output {srs_path} {file_name}")
     return file_name
 
+# 读取 l.yaml 中的每个链接并生成对应的 JSON 文件
+yaml_data = read_yaml_file('links.yaml')
 
+output_dir = "./rules"
 result_file_names = []
 
+for key, links in yaml_data.items():
+    dfs = []
+    rules_list = []
     for link in links:
+        df, rules = parse_list_file(link)
+        dfs.append(df)
+        rules_list.append(rules)
+    result_file_name = merge_and_save_results(key, dfs, rules_list, output_directory=output_dir)
     result_file_names.append(result_file_name)
 
 # 打印生成的文件名
+for file_name in result_file_names:
+    print(file_name)
