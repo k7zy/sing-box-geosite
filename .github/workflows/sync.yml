@@ -30,15 +30,18 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas requests pyyaml
+        pip install requests pyyaml
+    - name: Test converter
+      run: python -m unittest discover -s tests
     - name: Run script
       run: python main.py
-    - name: Commit and push config.json
+    - name: Commit and push rule sets
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
         git add ./rule-set/*.json
         git add ./rule-set/*.srs
+        git add ./rule-set/*.list
 
         # 检查是否有文件被修改
         if git diff --staged --quiet; then

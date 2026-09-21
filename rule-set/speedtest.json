@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "rules": [
     {
       "domain_keyword": [
@@ -13,6 +14,5 @@
         "speed.dler.io"
       ]
     }
-  ],
-  "version": 2
+  ]
 }

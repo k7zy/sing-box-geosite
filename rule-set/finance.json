@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -462,6 +463,5 @@
         "zksync.io"
       ]
     }
-  ],
-  "version": 2
+  ]
 }
