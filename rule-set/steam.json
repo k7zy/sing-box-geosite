@@ -73,6 +73,7 @@
         "dl.steam.clngaa.com",
         "dl.steam.ksyna.com",
         "donkeykongcountryreturns.com",
+        "dota2.com",
         "dota2.wmsj.cn",
         "dragonage.com",
         "dragonagekeep.com",
@@ -414,6 +415,7 @@
         "steamcdn-a.akamaihd.net",
         "steamcommunity-a.akamaihd.net",
         "steamcommunity.com",
+        "steamconnecttest.com",
         "steamcontent.tnkjmec.com",
         "steamdeck.com",
         "steamgames.com",
@@ -464,6 +466,7 @@
         "unrealtournament.com",
         "uo.com",
         "uoherald.com",
+        "valve.net",
         "valvesoftware.com",
         "visceralgames.com",
         "wariolandshakeit.com",
@@ -490,7 +493,19 @@
     },
     {
       "ip_cidr": [
-        "35.192.0.0/12"
+        "103.10.124.0/23",
+        "103.28.54.0/24",
+        "146.66.152.0/24",
+        "146.66.155.0/24",
+        "155.133.224.0/19",
+        "162.254.192.0/21",
+        "185.25.180.0/22",
+        "192.69.96.0/22",
+        "205.196.6.0/24",
+        "208.64.200.0/22",
+        "208.78.164.0/22",
+        "35.192.0.0/12",
+        "45.121.184.0/24"
       ]
     }
   ]

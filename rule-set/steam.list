@@ -60,6 +60,7 @@ DOMAIN-SUFFIX,dkr.com
 DOMAIN-SUFFIX,dl.steam.clngaa.com
 DOMAIN-SUFFIX,dl.steam.ksyna.com
 DOMAIN-SUFFIX,donkeykongcountryreturns.com
+DOMAIN-SUFFIX,dota2.com
 DOMAIN-SUFFIX,dota2.wmsj.cn
 DOMAIN-SUFFIX,dragonage.com
 DOMAIN-SUFFIX,dragonagekeep.com
@@ -401,6 +402,7 @@ DOMAIN-SUFFIX,steambroadcast.akamaized.net
 DOMAIN-SUFFIX,steamcdn-a.akamaihd.net
 DOMAIN-SUFFIX,steamcommunity-a.akamaihd.net
 DOMAIN-SUFFIX,steamcommunity.com
+DOMAIN-SUFFIX,steamconnecttest.com
 DOMAIN-SUFFIX,steamcontent.tnkjmec.com
 DOMAIN-SUFFIX,steamdeck.com
 DOMAIN-SUFFIX,steamgames.com
@@ -451,6 +453,7 @@ DOMAIN-SUFFIX,unrealengine.com
 DOMAIN-SUFFIX,unrealtournament.com
 DOMAIN-SUFFIX,uo.com
 DOMAIN-SUFFIX,uoherald.com
+DOMAIN-SUFFIX,valve.net
 DOMAIN-SUFFIX,valvesoftware.com
 DOMAIN-SUFFIX,visceralgames.com
 DOMAIN-SUFFIX,wariolandshakeit.com
@@ -473,4 +476,16 @@ DOMAIN-SUFFIX,xn--mts47c3w9b1qr.net
 DOMAIN-SUFFIX,yogify.com
 DOMAIN-SUFFIX,yoshisnewisland.com
 DOMAIN-SUFFIX,yourfantasybeginsnow.com
+IP-CIDR,103.10.124.0/23,no-resolve
+IP-CIDR,103.28.54.0/24,no-resolve
+IP-CIDR,146.66.152.0/24,no-resolve
+IP-CIDR,146.66.155.0/24,no-resolve
+IP-CIDR,155.133.224.0/19,no-resolve
+IP-CIDR,162.254.192.0/21,no-resolve
+IP-CIDR,185.25.180.0/22,no-resolve
+IP-CIDR,192.69.96.0/22,no-resolve
+IP-CIDR,205.196.6.0/24,no-resolve
+IP-CIDR,208.64.200.0/22,no-resolve
+IP-CIDR,208.78.164.0/22,no-resolve
 IP-CIDR,35.192.0.0/12,no-resolve
+IP-CIDR,45.121.184.0/24,no-resolve
